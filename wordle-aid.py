@@ -11,7 +11,7 @@ remaining_guesses = list(allowed_guesses)
 while user_input != '0':
     print("Enter the word you chose or 0 to exit.")
     user_input = input().lower()
-    if user_input in allowed_answers or user_input in remaining_guesses:
+    if user_input != '0':
         print("Enter the result of the word")
         print("(i.e. 0 0 1 0 2, 1 means correct letter and 2 means correct letter and position)")
         input_result = input()
@@ -24,6 +24,5 @@ while user_input != '0':
             print(f"The first 50 of the remaining {len(remaining_guesses)} guesses are {remaining_guesses[:50]}")
         else:
             print(f"The remaining guesses are {remaining_guesses}")
-    elif user_input != '0':
-        print(f"Sorry, it doesn't look like {user_input} is an allowed word.")
+    
 

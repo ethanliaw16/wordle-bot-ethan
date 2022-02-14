@@ -18,7 +18,7 @@ guess_random_index = random.randrange(len(allowed_guesses))
 guess = allowed_guesses[guess_random_index]
 #print(f"The chosen answer is {chosen_answer} ({random_index})")
 #print(f"Testing diff on answer and guess {guess}: {word_utils.get_diff(guess, chosen_answer)}")
-print("This is a wordle practice program. The game is based on the NY Times online game.\nTry to guess the five-lettor word!")
+print("This is a wordle practice program. The game is based on the NY Times online game.\nTry to guess the five-letter word!")
 previous_guesses = ["_ _ _ _ _"]
 user_guess = ""
 num_guesses = 0
