@@ -1,3 +1,5 @@
+import math
+
 def load_answers():
     answers_file = open('allowed-answers.txt')
     return answers_file.read().split("\n")
@@ -16,7 +18,7 @@ def get_diff(guess, answer):
         if guess[i] == answer[i]:
             result[i] = 2
         elif guess[i] in answer:
-            result[i] = 1            
+            result[i] = 1   
     return result
 
 def update_result(user_guess, chosen_answer, previous_guesses, unused_letters):
@@ -89,6 +91,16 @@ def get_info(guess, patterns, allowed_guesses):
     #print(f"Info of first 5 out of {len(information_for_guess)} patterns: {information_for_guess[:5]}")
     return sum(information_for_guess)/len(information_for_guess)
 
+def get_info_2(guess, patterns, allowed_guesses):
+    num_matches_for_pattern = [0] * len(patterns)
+    for i in range(len(patterns)):
+        for allowed_guess in allowed_guesses:
+            current_pattern = patterns[i]
+            diff = get_diff(guess, allowed_guess)
+            if diff == current_pattern:
+                num_matches_for_pattern[i] += 1
+    return num_matches_for_pattern
+
 def pad_to_5(num):
     if len(num) >= 5:
         return num
@@ -122,3 +134,6 @@ def enumerate_patterns():
         patterns.append(string_pattern_to_array(string_pattern))
         current_pattern += 1
     return patterns
+
+def info_from_probability(p):
+    return math.log(1/p,2)
